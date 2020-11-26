@@ -1,6 +1,6 @@
 # Tech-Architecture
 
-技术架构研究和学习，Technology Architecture study and learn。
+技术架构研究和学习，Technology Architecture study and learn
 
 ## 技术架构研究 TODO List
 
