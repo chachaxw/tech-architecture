@@ -14,6 +14,18 @@ Flutter技术架构研究和学习，Flutter technology architecture study and l
 
 ![Flutter Artifact](images/flutter_artifact.png)
 
+## Flutter引擎启动
+
+![Flutter Engine](images/flutter_engine_startup.png)
+
+### 引擎启动过程
+
+* FlutterApplication.java的onCreate方法完成初始化配置，加载引擎libflutter.so文件，注册JNI([Java Native Interface，Java本地接口](https://zh.wikipedia.org/wiki/Java本地接口))方法
+* FlutterActivity.java的onCreate过程，通过Flutter JNI的AttachJNI方法来初始化引擎Engine、Dart虚拟机、isolate线程、taskRunner等对象。再经过层层处理最终调用main.dart中的`main()`方法，执行runApp(Widget app)来处理整个Dart业务代码
+
+### Flutter引擎中的TaskRunner
+
+![both queues](images/both-queues.png)
 
 ## 🔭 学习更多
 
