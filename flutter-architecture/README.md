@@ -1,4 +1,4 @@
-# Flutter-Architecture
+# Flutter技术架构(Flutter Architecture)
 
 Flutter技术架构研究和学习，Flutter technology architecture study and learn
 
@@ -31,3 +31,4 @@ Flutter技术架构研究和学习，Flutter technology architecture study and l
 
 * [Flutter architecture overview](https://flutter.dev/docs/resources/architectural-overview)
 * [Flutter 跨平台演进及架构开篇](http://gityuan.com/flutter/)
+* [The Event Loop and Dart](https://web.archive.org/web/20170704074724/https://webdev.dartlang.org/articles/performance/event-loop)
