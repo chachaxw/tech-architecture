@@ -2,6 +2,12 @@
 
 技术架构研究和学习，Technology Architecture study and learn
 
+## 邓宁-克鲁格效应
+
+![邓宁-克鲁格效应](邓宁-克鲁格效应.png)
+
+[邓宁-克鲁格效应](https://zh.wikipedia.org/wiki/鄧寧-克魯格效應)
+
 ## 技术架构研究 TODO List
 
 - [ ] 设计模式研究
@@ -22,7 +28,7 @@
 - [ ] Vue架构研究
 - [ ] Angular架构研究
 - [ ] Webpack架构研究
-- [ ] Flutter架构研究
+- [x] [Flutter架构研究](flutter-architecture/README.md)
 - [ ] RxJava架构研究
 - [ ] RxSwift架构研究
 - [ ] RxJS架构研究
