@@ -2,7 +2,8 @@
 
 设计模式研究和学习，Design Pattern study and learn。
 
-> 为了方便代码演示设计模式，所有设计模式相关的内容均用XCode Playground来编写
+> 为了方便代码演示设计模式，所有设计模式相关的内容均用XCode Playground来编写，
+> 同时运用swift编程语言来描述所有设计模式具体内容
 
 ## 设计模式
 
