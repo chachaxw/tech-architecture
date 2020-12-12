@@ -2,6 +2,9 @@
 
 设计模式研究和学习，Design Pattern study and learn。
 
+> 为了方便代码演示设计模式，所有设计模式相关的内容均用XCode Playground来编写，
+> 同时运用swift编程语言来描述所有设计模式具体内容
+
 ## 设计模式
 
 [设计模式（design pattern）](https://zh.wikipedia.org/wiki/设计模式_(计算机))是对软件设计中普遍存在的各种问题，所提出的解決方案。
@@ -64,3 +67,7 @@
 [解释器模式](https://www.runoob.com/design-pattern/interpreter-pattern.html)
 [状态模式](https://www.runoob.com/design-pattern/state-pattern.html)
 [空对象模式](https://www.runoob.com/design-pattern/null-object-pattern.html)
+
+## 学习更多
+
+[设计模式(Design pattern)](https://www.runoob.com/design-pattern/design-pattern-intro.html)
