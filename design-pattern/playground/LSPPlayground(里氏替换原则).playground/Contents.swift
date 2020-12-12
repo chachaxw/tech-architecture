@@ -29,12 +29,12 @@ print("\(str)")
 //: [面向协议编程](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html)是swift的一个优秀特性，作用类似于Java里面的Interface
 
 /// 枪支协议
-protocol AbstractGun {
+protocol PGun {
     func shoot() -> Void
 }
 
 /// 枪支类Gun
-class Gun: AbstractGun {
+class Gun: PGun {
     /// 枪的主要作用就是射击
     func shoot() -> Void {
         print("父类枪支设计")
@@ -43,19 +43,22 @@ class Gun: AbstractGun {
 
 //: 定义完基本的枪支父类之后，我们来看看手枪、步枪、机枪的协议实现
 
+/// 手枪
 class HandGun: Gun {
     override func shoot() {
         print("手枪射击")
     }
 }
 
+/// 步枪
 class Rifle: Gun {
     override func shoot() {
         print("步枪射击")
     }
 }
 
-class MachineGunn: Gun {
+/// 机枪
+class MachineGun: Gun {
     override func shoot() {
         print("机枪射击")
     }
@@ -63,3 +66,35 @@ class MachineGunn: Gun {
 
 //: 上述代码的HandGun、Rifle、MachineGun都实现了继承了父类Gun的 shoot方法，且均对父类方法进行了覆盖重写
 //: 有了枪支之后，我们还要有使用这些枪支的士兵，所以，我们再来定义一个士兵类，代码如下：
+
+/// 士兵类
+class Soldier {
+    private var gun: Gun
+    
+    init() {
+        /// gun成员变量初始化
+        gun = HandGun()
+    }
+
+    public func setGun(gun: Gun) {
+        self.gun = gun
+    }
+    
+    public func killEnemy() {
+        print("\(gun) 射击")
+        gun.shoot()
+    }
+}
+
+let soldier = Soldier()
+let soldier1 = Soldier()
+
+soldier1.setGun(gun: Rifle())
+
+let soldier2 = Soldier()
+
+soldier2.setGun(gun: MachineGun())
+
+soldier.killEnemy()
+soldier1.killEnemy()
+soldier2.killEnemy()
