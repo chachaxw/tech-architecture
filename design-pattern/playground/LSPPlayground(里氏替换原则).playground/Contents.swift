@@ -18,14 +18,18 @@ var str = "Hello, Liskov Substitution Principle(里氏替换原则)，简称LSP"
 
 print("\(str)")
 
-//: 里氏替换原则为良好的继承定义了一个规范，一句简单的定义包含了4层含义
+//: 里氏替换原则为良好的继承定义了一个规范，一句简单的定义包含了4层含义:
+//:
 //: 1. 子类必须完全实现父类的方法
 //: 例如下图：
-//: ![里氏替换原则(LSP)](../../images/里氏替换原则(LSP).jpg)
+//:
+//: ![里氏替换原则(LSP)](../../images/里氏替换原则(LSP).png)
+let image = UIImage(named: "里氏替换原则(LSP)")
+
 //: 我们都会打吃鸡游戏，里面有各种各样的枪支，我们用上图来描述一下里面用到的各种枪支。枪的主要职责是射击，
 //: 所以我们定义了一个基本枪支类Gun，在士兵类中定义了一个killEnemy方法，使用枪来杀敌人，具体用什么枪来杀敌人，要调用
 //: setGun才知道，我们首先来看看类Gun。
-//: 我们首先定义一个AbstractGunx协议，遵循这个协议的所有类都需要实现shoot方法，
+//: 我们首先定义一个AbstractGun协议，遵循这个协议的所有类都需要实现shoot方法，
 //: [面向协议编程](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html)是swift的一个优秀特性，作用类似于Java里面的Interface
 
 /// 枪支协议
@@ -65,6 +69,7 @@ class MachineGun: Gun {
 }
 
 //: 上述代码的HandGun、Rifle、MachineGun都实现了继承了父类Gun的 shoot方法，且均对父类方法进行了覆盖重写
+//:
 //: 有了枪支之后，我们还要有使用这些枪支的士兵，所以，我们再来定义一个士兵类，代码如下：
 
 /// 士兵类
@@ -98,3 +103,9 @@ soldier2.setGun(gun: MachineGun())
 soldier.killEnemy()
 soldier1.killEnemy()
 soldier2.killEnemy()
+
+//: 2.子类可以有自己的个性
+
+//: 3. 覆盖或实现父类的方法时输入参数可以被放大
+
+//: 4. 覆写或实现父类的方法时输出结果可以被缩小
