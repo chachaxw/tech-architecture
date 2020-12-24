@@ -55,6 +55,14 @@ Flutter引擎启动会创建Dart虚拟机以及Root Isolate。DartVM自身也拥
 
 ![Dart VM](images/isolate_heap.png)
 
+#### Flutter Widget
+
+StatelessWidget：内部没有保存状态，UI界面创建后不会发生改变
+
+StatefulWidget：内部有保存状态，当状态发生改变，调用setState()方法会触发StatefulWidget的UI更新，对于自定义继承自StatefulWidget的子类，必须要重写createState()方法
+
+![Flutter Widget](images/widget_arch.png)
+
 ## 🔭 学习更多
 
 * [Flutter通用开发模板](https://github.com/chachaxw/flutter_common_template)
