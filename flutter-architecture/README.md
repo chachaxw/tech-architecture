@@ -63,6 +63,16 @@ StatefulWidget：内部有保存状态，当状态发生改变，调用setState(
 
 ![Flutter Widget](images/widget_arch.png)
 
+[Flutter组件渲染和布局原理](https://flutter.dev/docs/resources/architectural-overview#rendering-and-layout)
+
+#### Platform Channels
+
+![Flutter Platform Channels](images/platform_channels.png)
+
+Flutter提供了Platform Channels来允许开发者调用安卓和iOS原生代码，是一个用于Dart代码和原生应用程序之间进行通信的简单机制。通过创建一个通用的Channel（通道），你可以在原生代码（例如Swift，Kotlin）和Dart之间直接发送和接收消息。Dart的（例如Map）数据类型会经过序列化为标准格式，然后反序列化为Kotlin（例如HashMap）或 Swift（例如Dictionary）的等效表示形式。
+
+[Flutter Platform Channels官方解读](https://flutter.dev/docs/resources/architectural-overview#platform-channels)
+
 ## 🔭 学习更多
 
 * [Flutter通用开发模板](https://github.com/chachaxw/flutter_common_template)
