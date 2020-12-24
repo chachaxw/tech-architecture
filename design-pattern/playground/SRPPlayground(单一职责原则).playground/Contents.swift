@@ -6,7 +6,7 @@ import UIKit
 //:
 //: 单一职责的划分界限并不是那么清晰，很多时候需要靠个人经验界定。当然最大的问题就是对职责的定义，什么是类的职责，以及怎么划分类的职责。
 //:
-//: ![单一职责原则(SRP)](../../images/单一职责原则(SRP).jpg)
+//: ![单一职责原则(SRP)](单一职责原则(SRP).png)
 //:
 
 //: ### 单一职责原则实例：
@@ -40,10 +40,10 @@ protocol UserInfo {
 }
 
 //: 从上面的用户协议来看，用户的属性和用户行为杂糅在一个协议里面，并未遵循单一职责原则。
-//: 应该把用户的信息抽取成一个业务对象BO（Business Object），把用户行为抽取成一个业务逻辑Biz（Business Logic）
+//: 应该把用户的信息抽取成一个业务对象BO（Business Object），把用户行为抽取成一个业务逻辑对象Biz（Business Logic）
 //:
 //: 改造后：
-// 用户基本信息
+// 用户基本属性对象
 protocol UserInfoBO {
     func setUserId(id: String) -> Void
     
@@ -58,7 +58,7 @@ protocol UserInfoBO {
     func getUsername() -> String
 }
 
-// 用户业务逻辑
+// 用户业务逻辑对象
 protocol UserInfoBiz {
     func changePassword(old: String) -> Bool
     
