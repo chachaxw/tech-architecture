@@ -31,8 +31,9 @@ import UIKit
 // │   Subject   │              │   Observer   │
 // │             │<─────────────│              │
 // ╰─────────────╯  Subscribe   ╰──────────────╯
+
 //: ### 观察者模式相关文章
-//: 1. [观察者模式(Swifft)](https://refactoringguru.cn/design-patterns/observer)
+//: 1. [观察者模式(Swift)](https://refactoringguru.cn/design-patterns/observer)
 //: 2. [观察者模式(Java)](https://www.runoob.com/design-pattern/observer-pattern.html)
 //: 3. [观察者模式和发布订阅模式有什么不同?](https://www.zhihu.com/question/23486749/answer/314072549)
 
