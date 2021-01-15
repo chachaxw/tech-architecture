@@ -63,7 +63,7 @@ class EventEmitter {
 
         /// 该段代码无法生效，原因是，Swift 运算符（===和!==）只在AnyObject里面有定义，未在闭包里面实现该协议，所以无法从数组中获取相应的函数
         /// 解决方案请参考(https://stackoverflow.com/questions/24111984/how-do-you-test-functions-and-closures-for-equality)
-        /// 最简单的解决方案是，可以把函数包括一层对象，通过对比对象是否相等，来找到对应的回调函数
+        /// 最简单的解决方案是，可以把函数包装成对象，通过判断对象是否相等，来找到相应的回调函数
 //        let index: Int? = topics.firstIndex(where: { $0 === handler! as EventHandler })
         
         let index: Int? = topics.firstIndex(where: { $0 === handler })
