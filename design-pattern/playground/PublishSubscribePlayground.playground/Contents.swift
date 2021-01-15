@@ -37,38 +37,43 @@ var str = "Hello, Publish Subscribe playground"
 
 //: 下面我们来看看如何实现发布订阅模式。
 
-typealias EventHandler = (_ args: Any...) -> ()
-
-protocol Invocable: class {
-    func invoke(data: Any)
-}
+typealias EventHandler = (_ args: Any...) -> Void
 
 class EventEmitter {
-    private var callbacks = [String: [EventHandler]]()
+    private var eventHandlers = [String: [EventHandlerWrapper]]()
     
     /// 订阅指定的主题
-    func subscribe(topic: String, handlers: [EventHandler]...) {
-        var topics: [EventHandler] = callbacks[topic] ?? []
+    func subscribe(topic: String, handlers: [EventHandlerWrapper]...) {
+        var topics: [EventHandlerWrapper] = eventHandlers[topic] ?? []
 
         handlers.forEach({ topics.append(contentsOf: $0) })
 
-        callbacks[topic] = topics
+        eventHandlers[topic] = topics
     }
 
     /// 取消订阅指定的主题
-    func unsubscribe(topic: String, handler: EventHandler?) -> Bool {
+    func unsubscribe(topic: String, handler: EventHandlerWrapper?) -> Bool {
+        print("取消订阅主题 \(topic)")
+
         if handler == nil {
-            return (callbacks.removeValue(forKey: topic) != nil)
+            return (eventHandlers.removeValue(forKey: topic) != nil)
         }
         
-        let topics: [EventHandler] = callbacks[topic] ?? []
+        var topics: [EventHandlerWrapper] = eventHandlers[topic] ?? []
 
         /// 该段代码无法生效，原因是，Swift 运算符（===和!==）只在AnyObject里面有定义，未在闭包里面实现该协议，所以无法从数组中获取相应的函数
         /// 解决方案请参考(https://stackoverflow.com/questions/24111984/how-do-you-test-functions-and-closures-for-equality)
+        /// 最简单的解决方案是，可以把函数包括一层对象，通过对比对象是否相等，来找到对应的回调函数
 //        let index: Int? = topics.firstIndex(where: { $0 === handler! as EventHandler })
+        
+        let index: Int? = topics.firstIndex(where: { $0 === handler })
+        
+        if index != nil {
+            topics.remove(at: index!);
+        }
 
         if (topics.isEmpty) {
-            callbacks.removeValue(forKey: topic)
+            eventHandlers.removeValue(forKey: topic)
         }
 
         return true;
@@ -76,11 +81,39 @@ class EventEmitter {
     
     /// 为指定的主题发布消息
     func publish(topic: String, _ args: Any...) -> [Any]? {
-        let topics: [EventHandler] = callbacks[topic] ?? []
-        
-        return topics.map({ handler in
-            print("处理函数 \(String(describing: handler))")
-            return handler(args)
+        let topics: [EventHandlerWrapper] = eventHandlers[topic] ?? []
+
+        return topics.map({ topic in
+            print("发布主题 \(topic)")
+            return topic.handler(args)
         })
     }
 }
+
+/// 事件处理包装类
+class EventHandlerWrapper: NSObject {
+    let handler: EventHandler
+    
+    init(handler: @escaping EventHandler) {
+        self.handler = handler
+    }
+}
+
+
+/// 发布订阅模式运行实例
+
+let eventEmitter = EventEmitter();
+let eventHandler = EventHandlerWrapper(handler: { (data: Any...) in
+    print("收到订阅的消息：\(data)")
+})
+
+eventEmitter.subscribe(topic: "Swift", handlers: [eventHandler])
+eventEmitter.publish(topic: "Swift", "Hello", "Swift")
+
+eventEmitter.publish(topic: "Swift", "取消Swfit订阅前，发布事件会打印！")
+eventEmitter.unsubscribe(topic: "Swift", handler: eventHandler)
+eventEmitter.publish(topic: "Swift", "取消Swfit订阅后，发布事件不会打印！")
+
+//: 上述代码执行结果如下:
+//:
+//: ![代码执行结果](result.png)
