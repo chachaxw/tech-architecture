@@ -7,6 +7,8 @@ import UIKit
 //: 第一种定义：如果对每一个类型为S的对象O1，都有类型为T的对象O2，使得以T定义的所有程序P
 //: 在所有的对象O1都代换成O2时，程序P的行为没有发生变化，那么类型S是类型T的子类型，
 //:
+//: ![里氏替换原则定义](里氏替换原则定义.png)
+//:
 //: If for each object O1 of type S there is an object O2 of type T such that for all programs P defined in terms of T,
 //: the behavior of P is unchanged when O1 is substituted for O2 then S is subtype of T.
 //:
@@ -72,20 +74,15 @@ class MachineGun: Gun {
 
 /// 士兵类
 class Soldier {
-    private var gun: Gun
-
-    init() {
-        /// gun成员变量初始化
-        gun = HandGun()
-    }
+    private var gun: Gun?
 
     public func setGun(gun: Gun) {
         self.gun = gun
     }
     
     public func killEnemy() {
-        print("\(gun) 射击")
-        gun.shoot()
+        print("\(String(describing: gun)) 射击")
+        gun?.shoot()
     }
 }
 
@@ -124,18 +121,74 @@ let soldier3 = Soldier()
 soldier3.setGun(gun: ToyGun())
 soldier3.killEnemy()
 
-//: 但是，我们发现一个问题，ToyGun是不能射出子弹的，但是玩家用玩具枪去射击的话，就会出现问题。虽然我们可以在Solider类中添加判断，
+//: 但是，我们发现一个问题，ToyGun是不能射出子弹的，但是玩家用玩具枪去射击的话，就会出现问题。虽然我们可以在Soldier类中添加判断，
 //: 但是在程序中，每增加一个类，所有与这个父类有关系的类都必须修改，是不合理的。正确的做法是重新声明一个ToyGun的父类ToyGunParent。
 //: 我们可以画出如下类图:
+//:
 //: ![里氏替换原则(LSP)2](里氏替换原则(LSP)_2.png)
 //: > 如果子类不能完整的实现父类的方法，或者父类的某些方法在子类中已经发生了“畸变”，则建议断开父子继承关系，采用依赖、聚集、组合等关系代替继承。
 
 //: 2. 子类可以有自己的个性
+//:
 //: 例如下图：
+//:
 //: ![里氏替换原则(LSP)3](里氏替换原则(LSP)_3.png)
 //:
-//: 子类可以有自己的行为和外观，也就是方法和属性。比如步枪，我们有AK47，AUG狙击步枪等。
+//: 子类可以有自己的行为和外观，也就是方法和属性。比如步枪，我们有AK47，AUG狙击步枪等。我们以AUG狙击枪为例，来看看如何实现。
+class AUG: Rifle {
+    func zoomOut() {
+        print("通过望远镜察看敌人...")
+    }
+    
+    override func shoot() {
+        print("通过AUG狙击枪射击...")
+    }
+}
+
+//: 有了狙击枪，我们再来看看狙击手类：
+class Snipper {
+    private var aug: AUG?
+
+    public func setGun(aug: AUG) {
+        self.aug = aug
+        print("设置狙击枪...")
+    }
+
+    public func killEnemy() {
+        aug?.zoomOut()
+        aug?.shoot()
+    }
+}
+
+//: 狙击手使用狙击枪来杀死敌人。
+let snipper = Snipper()
+
+snipper.setGun(aug: AUG())
+snipper.killEnemy()
 
 //: 3. 覆盖或实现父类的方法时输入参数可以被放大
 
 //: 4. 覆写或实现父类的方法时输出结果可以被缩小
+//:
+//: 父类的一个方法的返回值是一个类型T，子类的相同方法(重载或覆写)的返回值类型为S，
+//: 那么里氏替换原则就要求S必须小于等于T，也就是说，要么S和T是同一 个类型，要么S是T的子类，为什么呢?
+//: 分两种情况，如果是覆写，父类和子类的同名方法的 输入参数是相同的，两个方法的范围值S小于等于T，这是覆写的要求，
+//: 这才是重中之重，子类覆写父类的方法，天经地义；如果是重载，则要求方法的输入参数类型或数量不相同，在里氏替换原则要求下，
+//: 就是子类的输入参数宽于或等于父类的输入参数，也就是说你写的这个方法是不会被调用的，参考上面讲的前置条件
+//:
+//:
+//: ### 总结
+//:
+//: 里氏替换原则的核心原理是抽象，抽象又依赖与继承这个特性，在OOP中，继承的优缺点相当明显，优点如下：
+//:
+//: 1. 代码共享，减少创建类的工作量，每个子类都拥有父类的方法和属性
+//: 2. 子类可以形似父类，但又异于父类
+//: 3. 提高代码的可扩展性
+//:
+//: 继承的缺点：
+//:
+//: 1. 继承是侵入性的，只要继承就会拥有父类的所有属性和方法
+//: 2. 降低代码的灵活性，子类必须拥有父类的属性和方法，让子类多了些约束
+//: 3. 增强了耦合性，当父类的常量、变量和方法被修改时，需要考虑子类的修改
+//:
+//: 里氏替换原则是针对OOP中类的继承的缺点而建立的一些约束条件和规则
