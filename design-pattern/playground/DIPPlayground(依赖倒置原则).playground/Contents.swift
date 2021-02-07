@@ -3,7 +3,7 @@ import UIKit
 //:
 //: ### 什么是依赖倒置原则(Dependence Inversion Principle)？
 //:
-#imageLiteral(resourceName: "依赖倒置原则1.png")//: 依赖倒置原则的原始定义:
+//: 依赖倒置原则的原始定义:
 //:
 //: 高层模块不应该依赖于低层模块，两者都应该依赖于抽象。抽象不应该依赖于细节，细节应该依赖于抽象。
 //:
@@ -107,3 +107,70 @@ driver1.drive(car: bmw)
 //: > 实际类型是对象的类型，如driver1的表面类型是PDriver，实际类型是NewDriver。
 //:
 //: 依赖倒置原则可以减少类间的耦合性，提高系统的稳定性，降低并行开发引起的风险，提高代码的可读性和可维护性。
+//:
+//: ### 依赖的三种写法
+//:
+//: 1. 构造函数传递依赖对象
+//:
+//: 在类中通过构造函数声明依赖对象，按照依赖注入的说法，这种方式叫做构造函数注入。按照这种方式注入，`PDriver`和`NewDriver`代码就可以修改为这样:
+//:
+/// 构造函数传递依赖对象
+protocol PDriver1 {
+    func drive() -> Void
+}
+
+class NewDriver1: PDriver1 {
+    private var car: PCar
+    
+    init(car: PCar) {
+        self.car = car
+    }
+
+    func drive() {
+        self.car.run()
+    }
+}
+
+//: 2. Setter方法传递依赖对象
+//:
+//: 在抽象中设置Setter方法声明依赖关系，按照依赖注入的说法，这种方式叫做Setter依赖注入。按照这种方式注入，`PDriver`和`NewDriver`代码就可以修改为这样:
+//:
+/// Setter方法传递依赖对象
+protocol PDriver2 {
+    func setCar(car: PCar) ->Void
+    
+    func drive() -> Void
+}
+
+class NewDriver2: PDriver2 {
+    private var car: PCar? = nil
+
+    func setCar(car: PCar) {
+        self.car = car
+    }
+
+    func drive() {
+        self.car?.run()
+    }
+}
+
+//: 3. 协议（接口）声明依赖对象
+//:
+//: 在协议（或接口）的方法汇总声明依赖对象，前面用依赖倒置原则注入依赖的例子就是通过协议（或接口）声明依赖的方式。
+//:
+//: ###总结
+//:
+//: 依赖倒置原则的本质是通过抽象（协议、接口或抽象类）使各个类或模块的实现彼此独立，不互相影响，实现模块间的松藕合，
+//: 我们在项目中如何使用依赖倒置原则呢？只需要遵循下面几个规则：
+//:
+//: * 每个类尽量都有协议（接口）或抽象类，或者抽象类和协议（接口）两者都具备
+//:
+//: * 变量的表面类型尽量是接口或者抽象类
+//:
+//: * 尽量保证任何类都不应该从具体类派生（也不是绝对避免，现实情况往往更为复杂）
+//:
+//: * 尽量不要覆写基类的方法
+//:
+//: * 结合[里氏替换原则](https://github.com/Cosmos-Front-end/tech-architecture/blob/master/design-pattern/playground/LSPPlayground(里氏替换原则).playground)使用
+//:
+//: 在实际项目中，只要记住“面向协议（接口）编程”就基本上抓住了依赖倒置原则的核心
