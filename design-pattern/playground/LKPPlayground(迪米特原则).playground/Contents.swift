@@ -109,7 +109,7 @@ teacher1.command(leader: NewLeader(girls: girls))
 //:
 //: 如果一个方法在本类中，既不增加类间关系，也对本类不产生负面影响，那就放置在本类。
 //:
-//: 4. 谨慎使用Serializable
+//: 4. 谨慎使用Serializable（[Java序列化](https://www.runoob.com/java/java-serialization.html)）
 
 //: ### 总结
 //:
