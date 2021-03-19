@@ -1,6 +1,3 @@
-import UIKit
-
-//:
 //: ### 什么是接口隔离原则（Interface Segregattion Principle）?
 //:
 //: 接口隔离原则的定义：

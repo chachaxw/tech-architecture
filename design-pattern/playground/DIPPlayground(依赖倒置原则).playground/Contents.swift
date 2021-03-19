@@ -1,6 +1,3 @@
-import UIKit
-
-//:
 //: ### 什么是依赖倒置原则(Dependence Inversion Principle)？
 //:
 //: 依赖倒置原则的原始定义:

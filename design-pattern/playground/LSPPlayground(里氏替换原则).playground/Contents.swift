@@ -1,6 +1,3 @@
-import UIKit
-
-//:
 //: ### 什么是里氏替换原则(Liskov Substitution Principle)？
 //:
 //: 里氏替换原则有两种定义：
