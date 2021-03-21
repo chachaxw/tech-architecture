@@ -28,7 +28,7 @@
 - [ ] Vue架构研究
 - [ ] Angular架构研究
 - [ ] Webpack架构研究
-- [x] [Flutter架构研究](flutter-architecture/README.md)
+- ✅ [Flutter架构研究](flutter-architecture/README.md)
 - [ ] RxJava架构研究
 - [ ] RxSwift架构研究
 - [ ] RxJS架构研究
