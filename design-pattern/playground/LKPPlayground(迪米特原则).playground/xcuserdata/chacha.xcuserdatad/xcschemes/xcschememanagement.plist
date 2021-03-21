@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>LSPPlayground(里氏替换原则) (Playground).xcscheme</key>
+		<key>LKPPlayground(迪米特原则) (Playground).xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

@@ -1,4 +1,3 @@
-import UIKit
 
 var str = "Hello, Singleton Pattern playground"
 

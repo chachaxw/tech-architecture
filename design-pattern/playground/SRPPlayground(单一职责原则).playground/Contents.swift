@@ -1,5 +1,3 @@
-import UIKit
-
 //: ### 单一职责原则(Single Responsibility Principle)
 //: > 定义：就一个类而言， 应该仅有一个引起它变化的原因
 //: >  There should never be more than one reason for a class to change.

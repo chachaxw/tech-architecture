@@ -1,5 +1,3 @@
-import UIKit
-
 //: ###  什么是迪米特法则(Law of Demeter, LoD)？
 //:
 //: 迪米特法则（Law of Demeter，LoD）也称为最少知识原则（Least Knowledge Principle，LKP），一个对象应该对其他对象有最少的了解。
