@@ -11,7 +11,7 @@
 //: the behavior of P is unchanged when O1 is substituted for O2 then S is subtype of T.
 //:
 //: 第二种定义：所有引用基类的地方必须能透明地使用其子类的对象
-//: Function that use poiners or references to base classes must be able to use objects of derived classes without knowing it.
+//: Function that use pointers or references to base classes must be able to use objects of derived classes without knowing it.
 //:
 
 var str = "Hello, Liskov Substitution Principle(里氏替换原则)，简称LSP"
