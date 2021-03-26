@@ -1,4 +1,4 @@
-//: ### 什么是接口隔离原则（Interface Segregattion Principle）?
+//: ### 什么是接口隔离原则（Interface Segregation Principle）?
 //:
 //: 接口隔离原则的定义：
 //:
@@ -7,6 +7,8 @@
 //: * 类间的依赖关系应该建立在最小的接口上
 
 var str = "Hello, Interface Segregation Principle(接口隔离原则)，简称ISP"
+
+print(str)
 
 //: 接口隔离原则是对接口（协议）进行规范约束，包含以下4层含义：
 //:
