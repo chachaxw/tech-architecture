@@ -1,14 +1,19 @@
-# Tech-Architecture
+# 🏠Tech-Architecture
 
 技术架构研究和学习，Technology Architecture study and learn
 
-## 邓宁-克鲁格效应
+![Github Issues](https://img.shields.io/github/issues/Cosmos-Front-end/tech-architecture)
+![Github Forks](https://img.shields.io/github/forks/Cosmos-Front-end/tech-architecture)
+![Github Stars](https://img.shields.io/github/stars/Cosmos-Front-end/tech-architecture)
+![Github License](https://img.shields.io/github/license/Cosmos-Front-end/tech-architecture)
+
+## 🤔邓宁-克鲁格效应
 
 ![邓宁-克鲁格效应](邓宁-克鲁格效应.png)
 
 [邓宁-克鲁格效应](https://zh.wikipedia.org/wiki/鄧寧-克魯格效應)
 
-## 技术架构研究 TODO List
+## 🔥技术架构研究 TODO List
 
 - [ ] [设计模式学习](design-pattern/README.md)
 - [ ] [小程序架构研究](mini-program-architecture/README.md)
