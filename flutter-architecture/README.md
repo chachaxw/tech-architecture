@@ -81,3 +81,4 @@ Flutter提供了Platform Channels来允许开发者调用安卓和iOS原生代�
 * [为追求高性能，我必须告诉你Flutter引擎线程的事实](https://zhuanlan.zhihu.com/p/38026271)
 * [Flutter architecture overview](https://flutter.dev/docs/resources/architectural-overview)
 * [The Event Loop and Dart](https://web.archive.org/web/20170704074724/https://webdev.dartlang.org/articles/performance/event-loop)
+* [Flutter Architecture Samples](https://fluttersamples.com)
