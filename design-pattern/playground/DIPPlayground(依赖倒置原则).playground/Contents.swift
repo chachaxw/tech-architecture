@@ -168,6 +168,6 @@ class NewDriver2: PDriver2 {
 //:
 //: * 尽量不要覆写基类的方法
 //:
-//: * 结合[里氏替换原则](https://github.com/Cosmos-Front-end/tech-architecture/blob/master/design-pattern/playground/LSPPlayground(里氏替换原则).playground)使用
+//: * 结合[里氏替换原则](https://github.com/chachaxw/tech-architecture/blob/master/design-pattern/playground/LSPPlayground(里氏替换原则).playground)使用
 //:
 //: 在实际项目中，只要记住“面向协议（接口）编程”就基本上抓住了依赖倒置原则的核心

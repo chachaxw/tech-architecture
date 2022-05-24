@@ -35,12 +35,12 @@
 
 ### 六大设计原则详细解读
 
-1. 里氏替换原则(https://github.com/Cosmos-Front-end/tech-architecture/issues/14)
-2. 单一职责原则(https://github.com/Cosmos-Front-end/tech-architecture/issues/15)
-3. 依赖倒置原则(https://github.com/Cosmos-Front-end/tech-architecture/issues/16)
-4. 接口隔离原则(https://github.com/Cosmos-Front-end/tech-architecture/issues/17)
-5. 迪米特原则(https://github.com/Cosmos-Front-end/tech-architecture/issues/18)
-6. 开闭原则(https://github.com/Cosmos-Front-end/tech-architecture/issues/19)
+1. 里氏替换原则(https://github.com/chachaxw/tech-architecture/issues/14)
+2. 单一职责原则(https://github.com/chachaxw/tech-architecture/issues/15)
+3. 依赖倒置原则(https://github.com/chachaxw/tech-architecture/issues/16)
+4. 接口隔离原则(https://github.com/chachaxw/tech-architecture/issues/17)
+5. 迪米特原则(https://github.com/chachaxw/tech-architecture/issues/18)
+6. 开闭原则(https://github.com/chachaxw/tech-architecture/issues/19)
 
 ## 设计模式分类
 
