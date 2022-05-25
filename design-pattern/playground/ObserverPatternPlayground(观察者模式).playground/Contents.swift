@@ -48,7 +48,7 @@ var str = "Hello, Observer Pattern playground"
 //: 实现代码如下:
 
 // 创建一个Observer协议
-protocol Observer: class {
+protocol Observer: AnyObject {
     func notify(subject: Subject) -> Void
 }
 

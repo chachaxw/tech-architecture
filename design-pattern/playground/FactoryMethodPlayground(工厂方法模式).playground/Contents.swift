@@ -91,7 +91,7 @@ creator2.someOperation()
 //:
 //: ## 总结
 //:
-//: 工厂方法模式是典型的解耦框架，高层模块只需要知道产品的抽象类，其他的实现类不需要关心，符合[迪米特法则](https://github.com/Cosmos-Front-end/tech-architecture/blob/master/design-pattern/playground/LKPPlayground(迪米特原则).playground)；
-//: 也符合[依赖倒置原则](https://github.com/Cosmos-Front-end/tech-architecture/tree/master/design-pattern/playground/DIPPlayground(依赖倒置原则).playground)，只依赖产品类的抽象；
-//: 当然也符合[里氏替换原则](https://github.com/Cosmos-Front-end/tech-architecture/tree/master/design-pattern/playground/LSPPlayground(里氏替换原则).playground)，使用产品子类替换产品父类也是没问题的。
+//: 工厂方法模式是典型的解耦框架，高层模块只需要知道产品的抽象类，其他的实现类不需要关心，符合[迪米特法则](https://github.com/chachaxw/tech-architecture/blob/master/design-pattern/playground/LKPPlayground(迪米特原则).playground)；
+//: 也符合[依赖倒置原则](https://github.com/chachaxw/tech-architecture/tree/master/design-pattern/playground/DIPPlayground(依赖倒置原则).playground)，只依赖产品类的抽象；
+//: 当然也符合[里氏替换原则](https://github.com/chachaxw/tech-architecture/tree/master/design-pattern/playground/LSPPlayground(里氏替换原则).playground)，使用产品子类替换产品父类也是没问题的。
 //:

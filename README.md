@@ -2,10 +2,10 @@
 
 技术架构研究和学习，Technology Architecture study and learn
 
-![Github Issues](https://img.shields.io/github/issues/Cosmos-Front-end/tech-architecture)
-![Github Forks](https://img.shields.io/github/forks/Cosmos-Front-end/tech-architecture)
-![Github Stars](https://img.shields.io/github/stars/Cosmos-Front-end/tech-architecture)
-![Github License](https://img.shields.io/github/license/Cosmos-Front-end/tech-architecture)
+![Github Issues](https://img.shields.io/github/issues/chachaxw/tech-architecture)
+![Github Forks](https://img.shields.io/github/forks/chachaxw/tech-architecture)
+![Github Stars](https://img.shields.io/github/stars/chachaxw/tech-architecture)
+![Github License](https://img.shields.io/github/license/chachaxw/tech-architecture)
 
 ## 🤔邓宁-克鲁格效应
 
