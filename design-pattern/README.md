@@ -44,6 +44,8 @@
 
 ## 设计模式分类
 
+![设计模式分类](设计模式(Design%20Pattern).png)
+
 设计模式一般分为创建型模式、结构型模式和行为型模式。
 
 ### 创建型模式
@@ -85,3 +87,4 @@
 ## 学习更多
 
 [设计模式(Design pattern)](https://www.runoob.com/design-pattern/design-pattern-intro.html)
+[设计模式](https://refactoringguru.cn/design-patterns)
