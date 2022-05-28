@@ -20,6 +20,13 @@ var str = "Hello, Singleton Pattern playground"
 //: > 但还没有获得对象(对象初始化是需要时间的)，第二个线程 B也在执行，执行到(singleton == null)判断，那么线程B获得判断条件也是为真，
 //: > 于是继续 运行下去，线程A获得了一个对象，线程B也获得了一个对象，在内存中就出现两个对象
 //:
+//: ## 单例模式结构
+//:
+//: ![单例模式结构](structure.png)
+//:
+//: 单例 （Singleton） 类声明了一个名为 get­Instance获取实例的静态方法来返回其所属类的一个相同实例。
+//: 单例的构造函数必须对客户端 （Client） 代码隐藏。 调用 获取实例方法必须是获取单例对象的唯一方式。
+//:
 /// 单例模式，线程不安全
 class Singleton {
     private static var instance: Singleton? = nil
