@@ -1,14 +1,14 @@
 
-var greeting = "Hello, playground"
+var greeting = "Hello, Abstract Factory playground"
 
-//: ### 抽象工厂模式的定义
+//: ## 抽象工厂模式的定义
 //:
 //: 抽象工厂模式是一种创建型设计模式，它能创建一系列相关的对象，而无需指定其具体类。
 //: 抽象工厂定义了用于创建不同产品的接口，但将实际的创建工作留给了具体工厂类。每个工厂类型都对应一个特定的产品变体。
 //:
 //: ![抽象工厂模式(AbstractFactory)](AbstractFactory.png)
 //:
-//: ### 抽象工厂模式的结构
+//: ## 抽象工厂模式的结构
 //:
 //: ![抽象工厂模式的结构](structure.png)
 //:
@@ -19,16 +19,38 @@ var greeting = "Hello, playground"
 //: 5. 尽管具体工厂会对具体产品进行初始化， 其构建方法签名必须返回相应的抽象产品。 这样，使用工厂类的客户端代码就不会与工厂创建的特定产品变体耦合。
 //: 客户端 （Client） 只需通过抽象接口调用工厂和产品对象， 就能与任何具体工厂/产品变体交互。
 //:
+//: ## 抽象工厂模式优缺点
+//:
+//: ### 优点
+//: 1. 你可以确保同一工厂生成的产品相互匹配。
+//: 2. 你可以避免客户端和具体产品代码的耦合。
+//: 3. 单一职责原则。 你可以将产品生成代码抽取到同一位置， 使得代码易于维护。
+//: 4. 开闭原则。 向应用程序中引入新产品变体时， 你无需修改客户端代码。
+//:
+//: ### 缺点
+//: 1. 由于采用该模式需要向应用中引入众多接口和类， 代码可能会比之前更加复杂。
+//:
+//: ## 抽象工厂模式实例：
+//:
 
-//: ### 抽象工厂模式实例：
+import XCTest
 
+/// The Abstract Factory protocol declares a set of methods that return
+/// different abstract products. These products are called a family and are
+/// related by a high-level theme or concept. Products of one family are usually
+/// able to collaborate among themselves. A family of products may have several
+/// variants, but the products of one variant are incompatible with products of
+/// another.
 protocol AbstractFactory {
     func createProductA() -> AbstractProductA
     
     func createProductB() -> AbstractProductB
 }
 
-/// 具体工厂1
+/// Concrete Factories produce a family of products that belong to a single
+/// variant. The factory guarantees that resulting products are compatible. Note
+/// that signatures of the Concrete Factory's methods return an abstract
+/// product, while inside the method a concrete product is instantiated.
 class ConcreteFactory1: AbstractFactory {
     func createProductA() -> AbstractProductA {
         return ConcreteProductA1()
@@ -40,7 +62,7 @@ class ConcreteFactory1: AbstractFactory {
     
 }
 
-/// 具体工厂2
+/// Each Concrete Factory has a corresponding product variant.
 class ConcreteFactory2: AbstractFactory {
 
     func createProductA() -> AbstractProductA {
@@ -52,11 +74,13 @@ class ConcreteFactory2: AbstractFactory {
     }
 }
 
+/// Each distinct product of a product family should have a base protocol. All
+/// variants of the product must implement this protocol.
 protocol AbstractProductA {
     func usefulFunctionA() -> String
 }
 
-/// 具体的产品由相应的具体的工厂生产
+/// Concrete Products are created by corresponding Concrete Factories.
 class ConcreteProductA1: AbstractProductA {
 
     func usefulFunctionA() -> String {
@@ -71,25 +95,31 @@ class ConcreteProductA2: AbstractProductA {
     }
 }
 
-/// 另一个产品的基本协议。所有产品都可以与每个产品交互，其他，但只有相同的产品具体的变体之间才能进行适当的交互。
+/// The base protocol of another product. All products can interact with each
+/// other, but proper interaction is possible only between products of the same
+/// concrete variant.
 protocol AbstractProductB {
 
-    /// 产品B能够做自己的事情......
+    /// Product B is able to do its own thing...
     func usefulFunctionB() -> String
 
-    /// ......但它也可以与ProductA合作
+    /// ...but it also can collaborate with the ProductA.
     ///
-    /// 抽象工厂确保它创建的所有产品都是相同的变体，因此互相兼容。
+    /// The Abstract Factory makes sure that all products it creates are of the
+    /// same variant and thus, compatible.
     func anotherUsefulFunctionB(collaborator: AbstractProductA) -> String
 }
 
+/// Concrete Products are created by corresponding Concrete Factories.
 class ConcreteProductB1: AbstractProductB {
 
     func usefulFunctionB() -> String {
         return "The result of the product B1."
     }
 
-    /// 此变体产品 B1 只能与变体产品 A1正常工作。否则，它可以接受任何实例 AbstractProductA 作为参数。
+    /// This variant, Product B1, is only able to work correctly with the
+    /// variant, Product A1. Nevertheless, it accepts any instance of
+    /// AbstractProductA as an argument.
     func anotherUsefulFunctionB(collaborator: AbstractProductA) -> String {
         let result = collaborator.usefulFunctionA()
         return "The result of the B1 collaborating with the (\(result))"
@@ -102,14 +132,18 @@ class ConcreteProductB2: AbstractProductB {
         return "The result of the product B2."
     }
 
-    /// 此变体产品 B2 只能与变体产品 A2 正常工作。否则，它可以接受任何实例 AbstractProductA 作为参数。
+    /// This variant, Product B2, is only able to work correctly with the
+    /// variant, Product A2. Nevertheless, it accepts any instance of
+    /// AbstractProductA as an argument.
     func anotherUsefulFunctionB(collaborator: AbstractProductA) -> String {
         let result = collaborator.usefulFunctionA()
         return "The result of the B2 collaborating with the (\(result))"
     }
 }
 
-/// 客户端代码仅通过摘要与工厂和产品配合使用，类型：AbstractFactory 和 AbstractProduct。这可以让你通过任何工厂或客户端代码的产品子类，而不破坏它。
+/// The client code works with factories and products only through abstract
+/// types: AbstractFactory and AbstractProduct. This lets you pass any factory
+/// or product subclass to the client code without breaking it.
 class Client {
 
     static func someClientCode(factory: AbstractFactory) {
@@ -121,11 +155,24 @@ class Client {
     }
 }
 
-print("Client: Testing client code with the first factory type:")
-Client.someClientCode(factory: ConcreteFactory1())
+/// Let's see how it all works together.
+class AbstractFactoryConceptual: XCTestCase {
 
-print("Client: Testing the same client code with the second factory type:")
-Client.someClientCode(factory: ConcreteFactory2())
+    func testAbstractFactoryConceptual() {
+
+        /// The client code can work with any concrete factory class.
+
+        print("Client: Testing client code with the first factory type:")
+        Client.someClientCode(factory: ConcreteFactory1())
+
+        print("Client: Testing the same client code with the second factory type:")
+        Client.someClientCode(factory: ConcreteFactory2())
+    }
+}
+
+let abstractFactory = AbstractFactoryConceptual()
+
+abstractFactory.testAbstractFactoryConceptual()
 
 /// 输出结果：
 /// Client: Testing client code with the first factory type:
