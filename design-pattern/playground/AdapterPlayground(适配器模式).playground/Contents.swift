@@ -95,9 +95,9 @@ class AdapterConceptual: XCTestCase {
     }
 }
 
-let adaper = AdapterConceptual()
+let adapter = AdapterConceptual()
 
-adaper.testAdapterConceptual()
+adapter.testAdapterConceptual()
 
 // 结果输出：
 // Client: I can work just fine with the Target objects:
