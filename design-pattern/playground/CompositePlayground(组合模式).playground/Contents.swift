@@ -4,6 +4,8 @@ var greeting = "Hello, Composite Pattern playground"
 
 //: ## 组合模式
 //:
+//: ![组合模式](composite.png)
+//:
 //: 组合模式是一种结构型设计模式，你可以使用它将对象组合成树状结构，并且能像使用独立对象一样使用它们。
 //:
 //: ## 组合模式的结构
@@ -15,6 +17,23 @@ var greeting = "Hello, Composite Pattern playground"
 //: 3. 容器（Container）——又名 “组合（Composite）”——是包含叶节点或其他容器等子项目的单位。容器不知道其子项目所属的具体类，
 //:    它只通过通用的组件接口与其子项目交互。容器接收到请求后会将工作分配给自己的子项目，处理中间结果，然后将最终结果返回给客户端。
 //: 4. 客户端 （Client） 通过组件接口与所有项目交互。 因此， 客户端能以相同方式与树状结构中的简单或复杂项目交互。
+//:
+//: ## 组合模式适合应用场景
+//:
+//: 1. 如果你需要实现树状对象结构，可以使用组合模式。组合模式为你提供了两种共享公共接口的基本元素类型：
+//:    简单叶节点和复杂容器。容器中可以包含叶节点和其他容器。这使得你可以构建树状嵌套递归对象结构。
+//: 2. 如果你希望客户端代码以相同方式处理简单和复杂元素，可以使用该模式。
+//:    组合模式中定义的所有元素共用同一个接口。在这一接口的帮助下，客户端不必在意其所使用的对象的具体类。
+//:
+//: ## 实现方式
+//:
+//: 1. 确保应用的核心模型能够以树状结构表示。尝试将其分解为简单元素和容器。记住，容器必须能够同时包含简单元素和其他容器。
+//: 2. 声明组件接口及其一系列方法，这些方法对简单和复杂元素都有意义。
+//: 3. 创建一个叶节点类表示简单元素。程序中可以有多个不同的叶节点类。
+//: 4. 创建一个容器类表示复杂元素。在该类中，创建一个数组成员变量来存储对于其子元素的引用。
+//:    实现组件接口方法时，记住容器应该将大部分工作交给其子元素来完成。该数组必须能够同时保存叶节点和容器，因此请确保将其声明为组合接口类型。
+//: 5. 最后，在容器中定义添加和删除子元素的方法。记住，这些操作可在组件接口中声明。
+//:    这将会违反接口隔离原则，因为叶节点类中的这些方法为空。但是，这可以让客户端无差别地访问所有元素，即使是组成树状结构的元素。
 //:
 //: ## 组合模式优缺点
 //:
@@ -168,3 +187,13 @@ class CompositeConceptual: XCTestCase {
 let composite = CompositeConceptual()
 
 composite.testCompositeConceptual()
+
+// Output Result
+// Client: I've got a simple component:
+// Result: Leaf
+//
+// Client: Now I've got a composite tree:
+// Result: Branch(Branch(Leaf Leaf) Branch(Leaf Leaf))
+//
+// Client: I don't need to check the components classes even when managing the tree:
+// Result: Branch(Branch(Leaf Leaf) Branch(Leaf Leaf) Leaf)
