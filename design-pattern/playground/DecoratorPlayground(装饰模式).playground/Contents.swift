@@ -7,6 +7,8 @@ var greeting = "Hello, Decorator Pattern playground"
 //:
 //: 装饰模式是一种结构型设计模式， 允许你通过将对象放入包含行为的特殊封装对象中来为原对象绑定新的行为。
 //:
+//: ![装饰模式](decorator.png)
+//:
 //: ## 装饰模式结构
 //:
 //: ![装饰模式结构](structure.png)
@@ -17,6 +19,25 @@ var greeting = "Hello, Decorator Pattern playground"
 //:    这样它就可以引用具体的部件和装饰。装饰基类会将所有操作委派给被封装的对象。
 //: 4. 具体装饰类（Concrete Decorators）定义了可动态添加到部件的额外行为。具体装饰类会重写装饰基类的方法，并在调用父类方法之前或之后进行额外的行为。
 //: 5. 客户端（Client）可以使用多层装饰来封装部件，只要它能使用通用接口与所有对象互动即可。
+//:
+//: ## 装饰模式适合应用场景
+//:
+//: 1. 如果你希望在无需修改代码的情况下即可使用对象，且希望在运行时为对象新增额外的行为，可以使用装饰模式。
+//:    装饰能将业务逻辑组织为层次结构，你可为各层创建一个装饰，在运行时将各种不同逻辑组合成对象。
+//:    由于这些对象都遵循通用接口，客户端代码能以相同的方式使用这些对象。
+//: 2. 如果用继承来扩展对象行为的方案难以实现或者根本不可行，你可以使用该模式。
+//:    许多编程语言使用 final 最终 关键字来限制对某个类的进一步扩展。复用最终类已有行为的唯一方法是使用装饰模式：用封装器对其进行封装。
+//:
+//: ## 实现方式
+//:
+//: 1. 确保业务逻辑可用一个基本组件及多个额外可选层次表示。
+//: 2. 找出基本组件和可选层次的通用方法。创建一个组件接口并在其中声明这些方法。
+//: 3. 创建一个具体组件类， 并定义其基础行为。
+//: 4. 创建装饰基类，使用一个成员变量存储指向被封装对象的引用。该成员变量必须被声明为组件接口类型，
+//:    从而能在运行时连接具体组件和装饰。装饰基类必须将所有工作委派给被封装的对象。
+//: 5. 确保所有类实现组件接口。
+//: 6. 将装饰基类扩展为具体装饰。具体装饰必须在调用父类方法（总是委派给被封装对象）之前或之后执行自身的行为。
+//: 7. 客户端代码负责创建装饰并将其组合成客户端所需的形式。
 //:
 //: ## 装饰模式优缺点
 //:
@@ -69,8 +90,7 @@ class Decorator: Component {
     }
 }
 
-/// Concrete Decorators call the wrapped object and alter its result in some
-/// way.
+/// Concrete Decorators call the wrapped object and alter its result in some way.
 class ConcreteDecoratorA: Decorator {
 
     /// Decorators may call parent implementation of the operation, instead of
@@ -81,8 +101,7 @@ class ConcreteDecoratorA: Decorator {
     }
 }
 
-/// Decorators can execute their behavior either before or after the call to a
-/// wrapped object.
+/// Decorators can execute their behavior either before or after the call to a wrapped object.
 class ConcreteDecoratorB: Decorator {
 
     override func operation() -> String {
@@ -91,8 +110,7 @@ class ConcreteDecoratorB: Decorator {
 }
 
 /// The client code works with all objects using the Component interface. This
-/// way it can stay independent of the concrete classes of components it works
-/// with.
+/// way it can stay independent of the concrete classes of components it works with.
 class Client {
     // ...
     static func someClientCode(component: Component) {
@@ -124,3 +142,10 @@ class DecoratorConceptual: XCTestCase {
 let decorator = DecoratorConceptual()
 
 decorator.testDecoratorConceptual()
+
+// Output Result
+// Client: I've got a simple component
+// Result: ConcreteComponent
+//
+// Client: Now I've got a decorated component
+// Result: ConcreteDecoratorB(ConcreteDecoratorA(ConcreteComponent))
