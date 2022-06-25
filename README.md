@@ -15,7 +15,7 @@
 
 ## 🔥技术架构研究 TODO List
 
-- ✅ [设计模式学习](design-pattern/README.md)
+- [x] [设计模式学习](design-pattern/README.md)
 - [ ] [小程序架构研究](mini-program-architecture/README.md)
 - [ ] [安卓系统架构研究](android-architecture/README.md)
 - [ ] [安卓应用MVVM架构研究](android-mvvm-architecture/README.md)
