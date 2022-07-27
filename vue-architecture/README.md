@@ -14,5 +14,8 @@ Vue技术架构研究和学习，Vue architecture study and learn。
 
 ## New Ways to Vue
 
-
 [New Ways to Vue - How the new tools and techniques affect the way we view and build applications](vue-london.pdf)
+
+## Vitest
+
+[Introduction to Vitest - A blazing fast test runner](vue-nation.pdf)
