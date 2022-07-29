@@ -30,7 +30,7 @@
 - [ ] [iOS应用混合架构研究](ios-hybrid-architecture/README.md)
 - [ ] [React架构研究](react-architecture/README.md)
 - [x] [ReactNative架构研究](react-native-architecture/README.md)
-- [ ] [Vue架构研究](vue-architecture/README.md)
+- [x] [Vue架构研究](vue-architecture/README.md)
 - [ ] [Angular架构研究](angular-architecture/README.md)
 - [x] [Webpack架构研究](webpack-architecture/README.md)
 - [x] [Flutter架构研究](flutter-architecture/README.md)
