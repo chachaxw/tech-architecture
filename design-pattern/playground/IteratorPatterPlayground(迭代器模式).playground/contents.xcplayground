@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<<<<<<< HEAD
 <playground version='5.0' target-platform='ios' display-mode='raw' buildActiveScheme='true' importAppTypes='true'>
+=======
+<playground version='5.0' target-platform='ios' buildActiveScheme='true' importAppTypes='true'>
+>>>>>>> 43d6aab (feat: add iterator pattern playground)
     <timeline fileName='timeline.xctimeline'/>
 </playground>
